@@ -1,41 +1,53 @@
-import React, { useState } from "react";
-import ContactList from "./ContactList";
-import ContactForm from "./ContactForm";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import { Route, Routes } from 'react-router-dom';
 
-function App() {
-  const [contacts, setContacts] = useState([]);
-  const [editingContact, setEditingContact] = useState(null);
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import AddContact from "./components/AddContact";
+import EditContact from "./components/EditContact";
+import { useDispatch } from "react-redux";
 
-  const addContact = (contact) => {
-    setContacts([...contacts, contact]);
-  };
+const App = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        const data = [];
+        const promise = async () => {
+            await fetch('https://jsonplaceholder.typicode.com/users/')
+                .then((response) => response.json())
+                .then((json) => {
+                    json.map((contact) => {
+                        data.push({
+                            id: contact.id,
+                            name: contact.name,
+                            number: contact.phone,
+                            email: contact.email
+                        });
+                    })
+                });
+            dispatch({ type: 'FETCH_CONTACTS', payload: data });
+        };
+        promise();
+    }, []);
 
-  const editContact = (contact) => {
-    setContacts(contacts.map((c) => (c.id === contact.id ? contact : c)));
-    setEditingContact(null);
-  };
 
-  return (
-    <Container className="my-4">
-      <Row>
-        <Col md={6}>
-          <ContactForm
-            addContact={addContact}
-            editContact={editContact}
-            editingContact={editingContact}
-            setEditingContact={setEditingContact}
-          />
-        </Col>
-        <Col md={6}>
-          <ContactList
-            contacts={contacts}
-            setEditingContact={setEditingContact}
-          />
-        </Col>
-      </Row>
-    </Container>
-  );
+    return (
+        <div className="App">
+            <ToastContainer />
+            <Navbar />
+            <Routes>
+                <Route exact path="/" element={<Home />}>
+
+                </Route>
+                <Route path="/add" element={<AddContact />}>
+
+                </Route>
+                <Route path="/edit/:id" element={<EditContact />}>
+
+                </Route>
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
