@@ -1,23 +1,24 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-toastify/dist/ReactToastify.css';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { createStore } from 'redux';
-import contactReducer from './reducers/contactReducer';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { Provider } from 'react-redux';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter as Router } from "react-router-dom";
+// import { createStore } from "redux";
+// import { contactReducer } from "./redux/reducers/contactReducer";
+// import { composeWithDevTools } from "redux-devtools-extension";
+import { Provider } from "react-redux";
+import { store } from "./redux/reducers/store";
 
-const store = createStore(contactReducer, composeWithDevTools());
 
-const root = createRoot(document.querySelector('#root'));
+
+const root = createRoot(document.querySelector("#root"));
 
 root.render(
-    <Provider store={store}>
-        <Router>
-            <App />
-        </Router>
-    </Provider>
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>
 );

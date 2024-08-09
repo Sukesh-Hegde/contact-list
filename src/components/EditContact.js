@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import { updateContact } from '../redux/reducers/contactReducer';
 
 const EditContact = () => {
     const [name, setName] = useState('');
@@ -49,7 +50,7 @@ const EditContact = () => {
             number
         }
 
-        dispatch({ type: 'UPDATE_CONTACT', payload: data });
+        dispatch(updateContact(data));
         toast.success("Contact updated successfully!!")
         navigate('/');
     };

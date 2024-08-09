@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { addContact } from '../redux/reducers/contactReducer';
 
 const AddContact = () => {
 
@@ -13,6 +14,7 @@ const AddContact = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
 
     const handelSubmit = e => {
         e.preventDefault();
@@ -39,7 +41,7 @@ const AddContact = () => {
             number
         }
 
-        dispatch({ type: 'ADD_CONTACT', payload: data });
+        dispatch(addContact(data));
         toast.success("Contact added successfully!!")
         navigate('/');
     };
