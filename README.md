@@ -40,4 +40,8 @@ Deleting a Contact: Click the "Delete" button next to a contact to remove it fro
 "@reduxjs/toolkit"
 
 ## ScreenShots
+![Screenshot 2024-08-10 at 9 06 29 PM](https://github.com/user-attachments/assets/70fb0e12-893c-4b10-a8ab-395007cb655c)
 
+![Screenshot 2024-08-10 at 9 06 42 PM](https://github.com/user-attachments/assets/d5ba802a-8f36-4715-9fbe-4d75a0496bc1)
+
+![Screenshot 2024-08-10 at 9 06 48 PM](https://github.com/user-attachments/assets/f0be676e-96cf-499b-9a81-89b15adc0f38)
