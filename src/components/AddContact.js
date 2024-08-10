@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { addContact } from '../redux/reducers/contactReducer';
+import { addContact, contactSelector } from '../redux/reducers/contactReducer';
 
 const AddContact = () => {
 
@@ -10,7 +10,7 @@ const AddContact = () => {
     const [email, setEmail] = useState('');
     const [number, setNumber] = useState('');
 
-    const contacts = useSelector(state => state);
+    const contacts = useSelector(contactSelector);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();

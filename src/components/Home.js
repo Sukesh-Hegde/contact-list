@@ -7,9 +7,7 @@ import { contactSelector, deleteContact } from '../redux/reducers/contactReducer
 const Home = () => {
 
     const contacts = useSelector(contactSelector);
-    console.log(contacts);
     
-
     const dispatch = useDispatch();
 
     const deleteContactHamdle = (id) => {

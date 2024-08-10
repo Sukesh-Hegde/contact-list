@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
-import { updateContact } from '../redux/reducers/contactReducer';
+import { contactSelector, updateContact } from '../redux/reducers/contactReducer';
 
 const EditContact = () => {
     const [name, setName] = useState('');
@@ -11,7 +11,8 @@ const EditContact = () => {
 
     const { id } = useParams();
 
-    const contacts = useSelector(state => state);
+    const contacts = useSelector(contactSelector);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const currentContact = contacts.find(contact => contact.id === parseInt(id));
